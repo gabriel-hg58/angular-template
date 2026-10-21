@@ -1,0 +1,35 @@
+.filter-form {
+  padding: 8px 0 4px;
+}
+
+.filter-form__fields {
+  display: grid;
+  grid-template-columns: minmax(220px, 2fr) minmax(180px, 1fr) auto;
+  align-items: start;
+  gap: 16px;
+}
+
+.filter-form__fields button {
+  min-width: 132px;
+  min-height: 56px;
+  border-radius: 7px;
+  font-size: 15px;
+}
+
+.filter-form__feedback {
+  margin: 0;
+  color: #34834b;
+  font-size: 14px;
+}
+
+@media (max-width: 760px) {
+  .filter-form__fields {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .filter-form__fields button {
+    width: 100%;
+    margin-top: 4px;
+  }
+}

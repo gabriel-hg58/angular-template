@@ -1,0 +1,31 @@
+<section class="login-page">
+  <div class="login-page__overlay"></div>
+
+  <div class="login-card-wrapper">
+    <mat-card class="login-card">
+      <img class="login-card__logo" src="assets/images/logos/logo-dark.svg" alt="Odynex" />
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+        <mat-form-field appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input
+            matInput
+            type="email"
+            formControlName="email"
+            autocomplete="email"
+            inputmode="email"
+          />
+          <mat-error *ngIf="loginForm.controls.email.hasError('required')">Informe o e-mail.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" formControlName="senha" autocomplete="current-password" />
+          <mat-error *ngIf="loginForm.controls.senha.hasError('required')">Informe a senha.</mat-error>
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" type="submit">Entrar</button>
+      </form>
+    </mat-card>
+  </div>
+</section>

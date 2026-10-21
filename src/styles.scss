@@ -1,0 +1,46 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$angular-template-primary: mat.define-palette(mat.$light-blue-palette, 500, 300, 700);
+$angular-template-accent: mat.define-palette(mat.$deep-purple-palette, 500);
+$angular-template-warn: mat.define-palette(mat.$red-palette);
+$angular-template-theme: mat.define-light-theme((
+  color: (
+    primary: $angular-template-primary,
+    accent: $angular-template-accent,
+    warn: $angular-template-warn
+  ),
+  typography: mat.define-typography-config($font-family: 'DM Sans, sans-serif'),
+  density: 0
+));
+
+@include mat.all-component-themes($angular-template-theme);
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #f3f6f7;
+  color: #2a3547;
+  font-family: 'DM Sans', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}

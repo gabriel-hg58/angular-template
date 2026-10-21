@@ -1,0 +1,27 @@
+<app-base-card title="Dashboard" subtitle="Consulte pelos filtros abaixo">
+  <form class="filter-form" [formGroup]="filtrosForm" (ngSubmit)="consultar()">
+    <div class="filter-form__fields">
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" formControlName="nome" placeholder="Digite o nome" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Número</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="numero"
+          placeholder="Digite o número"
+          inputmode="numeric"
+        />
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" type="submit">Consultar</button>
+    </div>
+
+    <p *ngIf="consultaRealizada" class="filter-form__feedback" role="status">
+      Consulta realizada com os filtros informados.
+    </p>
+  </form>
+</app-base-card>

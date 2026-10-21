@@ -1,0 +1,50 @@
+<mat-card
+  class="base-card"
+  [class.base-card--collapsed]="expandable && !expanded"
+  [style.height]="height"
+  [style.margin-top]="marginTop"
+  [style.overflow]="expandable && !expanded ? 'hidden' : overflow"
+  [style.position]="relative ? 'relative' : 'static'"
+  [style.border-bottom-left-radius.px]="borderBottomLeftRadius"
+>
+  <ng-container *ngIf="title">
+    <header class="base-card__header">
+      <div class="base-card__heading">
+        <h2>{{ title }}</h2>
+        <p *ngIf="subtitle">{{ subtitle }}</p>
+      </div>
+
+      <div class="base-card__actions" *ngIf="chipTitle || expandable">
+        <span
+          *ngIf="chipTitle"
+          class="base-card__chip"
+          [style.border-color]="chipTitleColor"
+          [style.color]="chipTitleColor"
+        >
+          {{ chipTitle }}
+        </span>
+
+        <button
+          *ngIf="expandable"
+          mat-icon-button
+          type="button"
+          class="base-card__expand-button"
+          [attr.aria-expanded]="expanded"
+          [attr.aria-label]="expanded ? 'Ocultar conteúdo' : 'Expandir conteúdo'"
+          [matTooltip]="expanded ? 'Ocultar' : 'Expandir'"
+          (click)="toggleExpanded()"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path *ngIf="expanded" d="m7.4 15.4 4.6-4.6 4.6 4.6L18 14l-6-6-6 6 1.4 1.4Z" />
+            <path *ngIf="!expanded" d="m7.4 8.6 4.6 4.6 4.6-4.6L18 10l-6 6-6-6 1.4-1.4Z" />
+          </svg>
+        </button>
+      </div>
+    </header>
+    <div class="base-card__accent"></div>
+  </ng-container>
+
+  <mat-card-content *ngIf="showContent" class="base-card__content" [style.padding.px]="padding">
+    <ng-content></ng-content>
+  </mat-card-content>
+</mat-card>

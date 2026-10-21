@@ -1,0 +1,59 @@
+<div class="app-shell" [class.app-shell--menu-open]="menuOpen">
+  <button
+    class="menu-backdrop"
+    type="button"
+    aria-label="Fechar menu"
+    (click)="closeMenu()"
+  ></button>
+
+  <aside class="side-menu" aria-label="Menu principal">
+    <a class="side-menu__brand" [routerLink]="dashboardPath" (click)="closeMenu()">
+      <img src="assets/images/logos/logo-dark.svg" alt="Odynex" />
+    </a>
+
+    <nav class="side-menu__navigation">
+      <p class="side-menu__label">MENU</p>
+      <a
+        class="side-menu__item"
+        [routerLink]="dashboardPath"
+        routerLinkActive="side-menu__item--active"
+        (click)="closeMenu()"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 13h6V4H4v9Zm0 7h6v-5H4v5Zm10 0h6v-9h-6v9Zm0-16v5h6V4h-6Z" />
+        </svg>
+        <span>Dashboard</span>
+      </a>
+    </nav>
+  </aside>
+
+  <div class="app-main">
+    <mat-toolbar class="app-header">
+      <button
+        mat-icon-button
+        class="menu-toggle"
+        type="button"
+        aria-label="Abrir menu"
+        [attr.aria-expanded]="menuOpen"
+        (click)="toggleMenu()"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z" />
+        </svg>
+      </button>
+
+      <span class="app-header__title">Dashboard</span>
+      <span class="app-header__spacer"></span>
+
+      <button mat-stroked-button type="button" color="primary" (click)="logout()">
+        Sair
+      </button>
+    </mat-toolbar>
+
+    <main class="app-content">
+      <router-outlet></router-outlet>
+    </main>
+
+    <footer class="app-footer">Odynex</footer>
+  </div>
+</div>

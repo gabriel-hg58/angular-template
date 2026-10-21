@@ -1,0 +1,66 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.login-page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #07111e url('/assets/images/backgrounds/bg-login.jpg') center / cover no-repeat;
+}
+
+.login-page__overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 65% 50%, rgba(210, 241, 223, 0.2), rgba(211, 215, 250, 0.22), rgba(186, 216, 244, 0.3));
+}
+
+.login-card-wrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 24px clamp(24px, 8vw, 150px);
+}
+
+.login-card {
+  width: min(100%, 500px);
+  padding: 24px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+}
+
+.login-card__logo {
+  display: block;
+  width: min(270px, 90%);
+  height: 70px;
+  margin: 0 auto 24px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+button[type='submit'] {
+  min-height: 48px;
+  margin-top: 8px;
+  border-radius: 7px;
+  font-size: 16px;
+}
+
+@media (max-width: 767px) {
+  .login-card-wrapper {
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .login-card {
+    padding: 20px;
+  }
+}
