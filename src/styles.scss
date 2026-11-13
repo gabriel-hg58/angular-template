@@ -2,8 +2,8 @@
 
 @include mat.core();
 
-$angular-template-primary: mat.define-palette(mat.$light-blue-palette, 500, 300, 700);
-$angular-template-accent: mat.define-palette(mat.$deep-purple-palette, 500);
+$angular-template-primary: mat.define-palette(mat.$blue-palette, 700);
+$angular-template-accent: mat.define-palette(mat.$deep-purple-palette, 300);
 $angular-template-warn: mat.define-palette(mat.$red-palette);
 $angular-template-theme: mat.define-light-theme((
   color: (
@@ -11,11 +11,24 @@ $angular-template-theme: mat.define-light-theme((
     accent: $angular-template-accent,
     warn: $angular-template-warn
   ),
-  typography: mat.define-typography-config($font-family: 'DM Sans, sans-serif'),
+  typography: mat.define-typography-config($font-family: 'Roboto, Segoe UI, sans-serif'),
   density: 0
 ));
 
 @include mat.all-component-themes($angular-template-theme);
+
+:root {
+  --app-background: #f1efee;
+  --app-surface: #fff;
+  --app-text: #292626;
+  --app-muted: #526078;
+  --app-border: #353232;
+  --app-sidebar: #211e1e;
+  --app-purple: #ca9bff;
+  --app-blue: #006fd6;
+  --app-radius: 16px;
+  --app-shadow: 0 3px 3px rgb(0 0 0 / 14%);
+}
 
 html,
 body {
@@ -24,9 +37,9 @@ body {
 
 body {
   margin: 0;
-  background: #f3f6f7;
-  color: #2a3547;
-  font-family: 'DM Sans', sans-serif;
+  background: var(--app-background);
+  color: var(--app-text);
+  font-family: Roboto, 'Segoe UI', sans-serif;
 }
 
 *,
@@ -43,4 +56,76 @@ a {
 button,
 input {
   font: inherit;
+}
+
+button, a, input { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid var(--app-blue); outline-offset: 4px; }
+[hidden] { display: none !important; }
+
+.mat-mdc-form-field {
+  width: 100%;
+  min-width: 0;
+  --mdc-outlined-text-field-container-shape: 14px;
+  --mdc-outlined-text-field-outline-color: var(--app-border);
+  --mdc-outlined-text-field-hover-outline-color: var(--app-text);
+  --mdc-outlined-text-field-outline-width: 2px;
+  --mdc-outlined-text-field-label-text-color: var(--app-text);
+  --mdc-outlined-text-field-input-text-color: var(--app-text);
+  --mdc-outlined-text-field-label-text-size: 14px;
+  --mat-form-field-container-height: 44px;
+  --mat-form-field-container-vertical-padding: 10px;
+  --mat-form-field-container-text-size: 14px;
+  --mat-form-field-container-text-tracking: 0.2px;
+}
+.mat-mdc-form-field .mat-mdc-text-field-wrapper { background: var(--app-surface); }
+.mat-mdc-form-field .mat-mdc-form-field-icon-suffix { color: var(--app-blue); }
+.mat-mdc-form-field .mat-datepicker-toggle-default-icon { width: 20px; height: 20px; }
+.mat-mdc-form-field .mat-datepicker-toggle { --mat-datepicker-toggle-icon-color: #0085ff; }
+.mat-mdc-form-field .mat-mdc-icon-button { --mdc-icon-button-state-layer-size: 44px; padding: 12px; }
+
+.mat-mdc-button-base {
+  --mdc-filled-button-container-shape: 7px;
+  --mdc-outlined-button-container-shape: 7px;
+  --mdc-outlined-button-outline-color: var(--app-border);
+  --mdc-filled-button-label-text-tracking: 0.2px;
+  --mdc-outlined-button-label-text-tracking: 0.2px;
+  --mdc-text-button-label-text-tracking: 0.2px;
+}
+.mat-mdc-unelevated-button.mat-primary {
+  --mdc-filled-button-container-color: var(--app-text);
+  --mdc-filled-button-label-text-color: #fff;
+  --mdc-filled-button-disabled-container-color: #717171;
+  --mdc-filled-button-disabled-label-text-color: #fff;
+}
+.mat-mdc-outlined-button:not(:disabled) { border-width: 2px; }
+.mat-mdc-button-base app-icon { margin-right: 8px; vertical-align: middle; }
+
+.notice {
+  padding: 13px 12px;
+  border: 2px solid #45465b;
+  border-radius: 7px;
+  background: #eeecff;
+  color: #343647;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.notice strong { display: block; margin-bottom: 7px; font-size: 12px; }
+.notice p { margin: 0; }
+.notice--warning { border-color: #866700; background: #fff8df; color: #654d00; }
+.notice--feedback { margin-top: 20px; }
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+.form-actions .clear-button { margin-left: -8px; }
+.form-feedback { margin: 16px 0 0; color: var(--app-muted); font-size: 14px; }
+@media (max-width: 900px) {
+  body:has(.app-shell--menu-open) { overflow: hidden; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
 }
